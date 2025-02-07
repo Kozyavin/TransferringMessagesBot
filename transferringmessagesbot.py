@@ -1,9 +1,18 @@
 # подключение библиотек
+import telebot
 import telethon
-TOKEN = '7582577059:AAGllhSZSyezkoY3VInyI4WCTmuf4YvZrvM'
 
 
-class NewsForwarderBot(telethon.Bot):
-    def forward_news(self, @edo_diadoc, @KonturDiadocNewsBot, message):
-        api = telethon.Client()
-        api.send_message(chat_id=@edo_diadoc, message=message, chat_id=@KonturDiadocNewsBot)
+import telethon
+
+class TransmittingMessagesBot(telethon.Bot):
+    def __init__(self, source_channel, destination_channel):
+        self.source_channel = '@edo_diadocsource_channel'
+        self.destination_channel = '@KonturDiadocNewsBot'
+
+    def start_bot(self):
+        bot = telethon.Bot(token='6969275970:AAFnV5gAzM4CUKjlR7wg2GqlpSh5JiFlQ10N')
+        bot.send_message(chat_id=self.source_channel, message='/start', chat_id=self.destination_channel)
+
+if __name__ == '__main__':
+    TransmittingMessagesBot()
